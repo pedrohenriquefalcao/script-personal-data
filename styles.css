@@ -1,0 +1,469 @@
+/* ==========================================================================
+   Script Personal Data - Interface Flutuante Clean Light Glass
+   ========================================================================== */
+
+#autofill-vagas-root {
+  all: initial;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999999;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#autofill-vagas-root *,
+#autofill-vagas-root *::before,
+#autofill-vagas-root *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* Botão Flutuante (FAB - apenas ícone no canto) */
+#autofill-vagas-root .afv-fab {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  color: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+#autofill-vagas-root .afv-fab:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(14, 165, 233, 0.55);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18), 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+#autofill-vagas-root .afv-fab:active {
+  transform: translateY(0);
+}
+
+#autofill-vagas-root .afv-fab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 70% 35%, #67e8f9 0%, #2563eb 55%, #091534 100%);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.45), 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+/* Painel Principal (Clean Light Glass - Compacto) */
+#autofill-vagas-root .afv-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 66px;
+  width: 232px;
+  max-width: calc(100vw - 24px);
+  max-height: min(80vh, 560px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  color: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+#autofill-vagas-root .afv-panel.afv-panel-edit {
+  width: 320px;
+}
+
+#autofill-vagas-root .afv-panel.afv-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Cabeçalho */
+#autofill-vagas-root .afv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+#autofill-vagas-root .afv-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+#autofill-vagas-root .afv-title-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 70% 35%, #67e8f9 0%, #2563eb 55%, #091534 100%);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.45), 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+#autofill-vagas-root .afv-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#autofill-vagas-root .afv-btn-ghost {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #334155;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+}
+
+#autofill-vagas-root .afv-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(14, 165, 233, 0.45);
+  color: #0f172a;
+}
+
+#autofill-vagas-root .afv-btn-close {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #64748b;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+#autofill-vagas-root .afv-btn-close:hover {
+  background: rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+}
+
+/* Corpo Rolável */
+#autofill-vagas-root .afv-body {
+  padding: 10px 12px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 23, 42, 0.2) transparent;
+}
+
+#autofill-vagas-root .afv-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+#autofill-vagas-root .afv-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#autofill-vagas-root .afv-body::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 23, 42, 0.2);
+  border-radius: 9999px;
+}
+
+/* Botão Principal */
+#autofill-vagas-root .afv-btn-primary {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  user-select: none;
+  text-align: center;
+}
+
+#autofill-vagas-root .afv-btn-primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+#autofill-vagas-root .afv-btn-primary:active {
+  transform: scale(0.99);
+}
+
+/* Mensagem de Status / Feedback */
+#autofill-vagas-root .afv-status {
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #334155;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  display: none;
+}
+
+#autofill-vagas-root .afv-status.afv-visible {
+  display: block;
+}
+
+#autofill-vagas-root .afv-status.afv-status-success {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(22, 163, 74, 0.35);
+  color: #15803d;
+}
+
+#autofill-vagas-root .afv-status.afv-status-error {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(220, 38, 38, 0.35);
+  color: #b91c1c;
+}
+
+/* Lista de Campos (Modo Visualização) */
+#autofill-vagas-root .afv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#autofill-vagas-root .afv-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+#autofill-vagas-root .afv-item:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(14, 165, 233, 0.4);
+}
+
+#autofill-vagas-root .afv-item-info {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#autofill-vagas-root .afv-item-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+#autofill-vagas-root .afv-item-value {
+  font-size: 12.5px;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#autofill-vagas-root .afv-btn-copy {
+  all: unset;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-width: 58px;
+  padding: 5px 9px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  color: #334155;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+#autofill-vagas-root .afv-btn-copy:hover {
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.45);
+  color: #0369a1;
+}
+
+#autofill-vagas-root .afv-btn-copy.afv-copied {
+  background: rgba(34, 197, 94, 0.18);
+  border-color: #16a34a;
+  color: #15803d;
+  font-weight: 700;
+}
+
+#autofill-vagas-root .afv-empty {
+  padding: 18px 12px;
+  text-align: center;
+  color: #64748b;
+  font-size: 12.5px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px dashed rgba(15, 23, 42, 0.18);
+  border-radius: 10px;
+}
+
+/* Formulário (Modo Edição) */
+#autofill-vagas-root .afv-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#autofill-vagas-root .afv-intro {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.45;
+}
+
+#autofill-vagas-root .afv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#autofill-vagas-root .afv-field label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+#autofill-vagas-root .afv-field input {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  font-size: 12.5px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+#autofill-vagas-root .afv-field input::placeholder {
+  color: #94a3b8;
+}
+
+#autofill-vagas-root .afv-field input:focus {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+}
+
+#autofill-vagas-root .afv-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+#autofill-vagas-root .afv-backup-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+#autofill-vagas-root .afv-btn-secondary {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  color: #334155;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  text-align: center;
+}
+
+#autofill-vagas-root .afv-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(14, 165, 233, 0.45);
+  color: #0f172a;
+}
+
+#autofill-vagas-root .afv-file-input {
+  display: none !important;
+}
+
+/* Destaque visual nos campos preenchidos na página hospedeira */
+.afv-field-filled {
+  border-color: #22c55e !important;
+  outline: 2px solid rgba(34, 197, 94, 0.45) !important;
+  outline-offset: 1px !important;
+  transition: border-color 0.2s ease, outline-color 0.2s ease !important;
+}
