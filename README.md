@@ -47,6 +47,7 @@ Além disso, como o painel é injetado diretamente no DOM de páginas de terceir
 ### Firefox (Desktop e Android)
 
 Instale diretamente pela página oficial da extensão no Firefox Add-ons (ou abrindo o arquivo `.xpi` assinado, caso tenha baixado pelas Releases).
+Link na biblioteca do Firefox: https://addons.mozilla.org/pt-BR/firefox/addon/script-personal-data/
 
 ### Chrome, Edge e Brave (Desktop)
 
